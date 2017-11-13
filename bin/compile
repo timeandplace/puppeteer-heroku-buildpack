@@ -103,7 +103,7 @@ find $BUILD_DIR/.apt -type f -ipath '*/pkgconfig/*.pc' | xargs --no-run-if-empty
 
 # KB Following: http://www.omgubuntu.co.uk/2016/08/enable-color-emoji-linux-google-chrome-noto 
 mkdir -p mkdir -p ~/.config/fontconfig/
-cat '<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+echo '<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 
 <match>
  <test name="family"><string>sans-serif</string></test>
