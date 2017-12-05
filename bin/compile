@@ -338,16 +338,24 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 
   <!-- Do not allow any app to fallback to Symbola, ever -->
   <selectfont>
+  
     <rejectfont>
       <pattern>
         <patelt name="family">
-          <string>Symbola</string>
+          <string>Bitstream Vera Sans Mono</string>
         </patelt>
       </pattern>
     </rejectfont>
   </selectfont>
-</fontconfig>
-
+  <selectfont>
+    <rejectfont>
+      <pattern>
+        <patelt name="family">
+          <string>Bitstream Vera Sans Mono</string>
+        </patelt>
+      </pattern>
+    </rejectfont>
+  </selectfont>
   <!-- Do not allow any app to fallback to Symbola, ever -->
   <selectfont>
     <rejectfont>
@@ -358,6 +366,41 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
       </pattern>
     </rejectfont>
   </selectfont>
+
+  <!-- Do not allow any app to fallback to Symbola, ever -->
+  <selectfont>
+    <rejectfont>
+      <pattern>
+        <patelt name="family">
+          <string>DejaVu Serif</string>
+        </patelt>
+      </pattern>
+    </rejectfont>
+  </selectfont>
+
+  <!-- Do not allow any app to fallback to Symbola, ever -->
+  <selectfont>
+    <rejectfont>
+      <pattern>
+        <patelt name="family">
+          <string>Nimbus Sans L</string>
+        </patelt>
+      </pattern>
+    </rejectfont>
+  </selectfont>
+
+
+  <!-- Do not allow any app to fallback to Symbola, ever -->
+  <selectfont>
+    <rejectfont>
+      <pattern>
+        <patelt name="family">
+          <string>Symbola</string>
+        </patelt>
+      </pattern>
+    </rejectfont>
+  </selectfont>
+
 </fontconfig>' > $BUILD_DIR/.config/fontconfig/fonts.conf
 fc-cache -f -v
 
