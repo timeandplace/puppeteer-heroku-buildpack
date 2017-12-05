@@ -149,13 +149,13 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
     <edit name="family" mode="prepend_first">
       <string>Bitstream Vera Serif</string>
     </edit>
-    <!-- Followed by Twitter Color Emoji -->
-    <edit name="family" mode="prepend_first">
-      <string>Twitter Color Emoji</string>
-    </edit>
     <!-- Followed by Noto Color Emoji -->
     <edit name="family" mode="prepend_first">
       <string>Noto Color Emoji</string>
+    </edit>
+    <!-- Followed by Twitter Color Emoji -->
+    <edit name="family" mode="prepend_first">
+      <string>Twitter Color Emoji</string>
     </edit>
   </match>
 
@@ -183,13 +183,13 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
     <edit name="family" mode="prepend_first">
       <string>Bitstream Vera Sans</string>
     </edit>
-    <!-- Followed by Twitter Color Emoji -->
-    <edit name="family" mode="prepend_first">
-      <string>Twitter Color Emoji</string>
-    </edit>
     <!-- Followed by Noto Color Emoji -->
     <edit name="family" mode="prepend_first">
       <string>Noto Color Emoji</string>
+    </edit>
+    <!-- Followed by Twitter Color Emoji -->
+    <edit name="family" mode="prepend_first">
+      <string>Twitter Color Emoji</string>
     </edit>
   </match>
 
@@ -220,13 +220,13 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
     <edit name="family" mode="prepend_first">
       <string>Bitstream Vera Sans Mono</string>
     </edit>
-    <!-- Followed by Twitter Color Emoji -->
-    <edit name="family" mode="prepend_first">
-      <string>Twitter Color Emoji</string>
-    </edit>
     <!-- Followed by Noto Color Emoji -->
     <edit name="family" mode="prepend_first">
       <string>Noto Color Emoji</string>
+    </edit>
+    <!-- Followed by Twitter Color Emoji -->
+    <edit name="family" mode="prepend_first">
+      <string>Twitter Color Emoji</string>
     </edit>
   </match>
 
@@ -239,21 +239,21 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
   <!-- Alias requests for the other emoji fonts -->
   <alias binding="strong">
     <family>Apple Color Emoji</family>
-    <prefer><family>Twitter Color Emoji</family></prefer>
+    <prefer><family>Noto Color Emoji</family></prefer>
     <default><family>sans-serif</family></default>
   </alias>
   <alias binding="strong">
     <family>Segoe UI Emoji</family>
-    <prefer><family>Twitter Color Emoji</family></prefer>
+    <prefer><family>Noto Color Emoji</family></prefer>
     <default><family>sans-serif</family></default>
   </alias>
   <alias binding="strong">
     <family>Noto Color Emoji</family>
-    <prefer><family>Twitter Color Emoji</family></prefer>
+    <prefer><family>Noto Color Emoji</family></prefer>
     <default><family>sans-serif</family></default>
   </alias>
   <alias binding="strong">
-    <family>DejaVu Sans</family>
+    <family>Apple Color Emoji</family>
     <prefer><family>Twitter Color Emoji</family></prefer>
     <default><family>sans-serif</family></default>
   </alias>
