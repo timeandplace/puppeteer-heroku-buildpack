@@ -106,7 +106,7 @@ mkdir -p $BUILD_DIR/.fonts
 ls $FONTS_DIR
 cp $FONTS_DIR/* $BUILD_DIR/.fonts/
 
-mkdir -p ~/.config/fontconfig
+mkdir -p $BUILD_DIR/.config/fontconfig
 echo '<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 <fontconfig>
@@ -346,5 +346,18 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
       </pattern>
     </rejectfont>
   </selectfont>
-</fontconfig>' > ~/.config/fontconfig/fonts.conf
+</fontconfig>
+
+  <!-- Do not allow any app to fallback to Symbola, ever -->
+  <selectfont>
+    <rejectfont>
+      <pattern>
+        <patelt name="family">
+          <string>DejaVu Sans</string>
+        </patelt>
+      </pattern>
+    </rejectfont>
+  </selectfont>
+</fontconfig>' > $BUILD_DIR/.config/fontconfig/fonts.conf
 fc-cache -f -v
+
