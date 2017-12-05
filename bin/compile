@@ -126,13 +126,19 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
   </match>
 
   <match target="font">
-    <!-- If the requested font is Bitstream Vera Serif -->
     <test name="family" compare="eq">
         <string>Avenir</string>
     </test>
-    <!-- Replace the entire match list with Bitstream Vera Serif alone -->
     <edit name="family" mode="assign_replace">
-      <string>Bitstream Vera Serif</string>
+      <string>Avenir</string>
+    </edit>
+    <!-- Followed by Noto Color Emoji -->
+    <edit name="family" mode="prepend_first">
+      <string>Noto Color Emoji</string>
+    </edit>
+    <!-- Followed by Twitter Color Emoji -->
+    <edit name="family" mode="prepend_first">
+      <string>Twitter Color Emoji</string>
     </edit>
     <!-- Assign the serif family -->
     <edit name="family" mode="append_last">
