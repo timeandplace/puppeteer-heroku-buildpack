@@ -110,6 +110,35 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
 <fontconfig>
   <match target="font">
+    <!-- If the requested font is Lato Regular -->
+    <test name="family" compare="eq">
+        <string>Lato Regular</string>
+    </test>
+    <!-- Replace the entire match list with Bitstream Vera Serif alone -->
+    <edit name="family" mode="assign_replace">
+      <string>Lato Regular</string>
+    </edit>
+    <!-- Assign the serif family -->
+    <edit name="family" mode="append_last">
+      <string>serif</string>
+    </edit>
+  </match>
+  <match target="font">
+    <!-- If the requested font is Lato Black -->
+    <test name="family" compare="eq">
+        <string>Lato Black</string>
+    </test>
+    <!-- Replace the entire match list with Bitstream Vera Serif alone -->
+    <edit name="family" mode="assign_replace">
+      <string>Lato Black</string>
+    </edit>
+    <!-- Assign the serif family -->
+    <edit name="family" mode="append_last">
+      <string>serif</string>
+    </edit>
+  </match>
+
+  <match target="font">
     <!-- If the requested font is Bitstream Vera Serif -->
     <test name="family" compare="eq">
         <string>Bitstream Vera Serif</string>
