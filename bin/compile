@@ -100,7 +100,7 @@ export | grep -E -e ' (LD_LIBRARY_PATH|LIBRARY_PATH|INCLUDE_PATH|CPATH|CPPPATH|P
 topic "Rewrite package-config files"
 find $BUILD_DIR/.apt -type f -ipath '*/pkgconfig/*.pc' | xargs --no-run-if-empty -n 1 sed -i -e 's!^prefix=\(.*\)$!prefix='"$BUILD_DIR"'/.apt\1!g'
 
-# KB Following: http://www.omgubuntu.co.uk/2016/08/enable-color-emoji-linux-google-chrome-noto 
+# KB Following: http://www.omgubuntu.co.uk/2016/08/enable-color-emoji-linux-google-chrome-noto
 mkdir -p $BUILD_DIR/.fonts
 ls $FONTS_DIR
 cp $FONTS_DIR/* $BUILD_DIR/.fonts/
@@ -118,23 +118,34 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
     <edit name="family" mode="assign_replace">
       <string>Lato Regular</string>
     </edit>
-    <!-- Assign the serif family -->
     <edit name="family" mode="append_last">
-      <string>serif</string>
+      <string>Lato Regular</string>
     </edit>
   </match>
+
   <match target="font">
     <!-- If the requested font is Lato Black -->
     <test name="family" compare="eq">
         <string>Lato Black</string>
     </test>
-    <!-- Replace the entire match list with Bitstream Vera Serif alone -->
     <edit name="family" mode="assign_replace">
       <string>Lato Black</string>
     </edit>
-    <!-- Assign the serif family -->
     <edit name="family" mode="append_last">
-      <string>serif</string>
+      <string>Lato Black</string>
+    </edit>
+  </match>
+
+  <match target="font">
+    <!-- If the requested font is Lato Black -->
+    <test name="family" compare="eq">
+        <string>Avenir</string>
+    </test>
+    <edit name="family" mode="assign_replace">
+      <string>Avenir</string>
+    </edit>
+    <edit name="family" mode="append_last">
+      <string>Avenir</string>
     </edit>
   </match>
 
@@ -143,7 +154,6 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
     <test name="family" compare="eq">
         <string>Bitstream Vera Serif</string>
     </test>
-    <!-- Replace the entire match list with Bitstream Vera Serif alone -->
     <edit name="family" mode="assign_replace">
       <string>Bitstream Vera Serif</string>
     </edit>
@@ -333,4 +343,3 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
 
 </fontconfig>' > $BUILD_DIR/.config/fontconfig/fonts.conf
 fc-cache -f -v
-
