@@ -118,20 +118,8 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
     <edit name="family" mode="assign_replace">
       <string>Lato Regular</string>
     </edit>
-    <!-- Followed by Noto Color Emoji -->
-    <edit name="family" mode="prepend_first">
-      <string>Noto Color Emoji</string>
-    </edit>
-    <!-- Followed by Twitter Color Emoji -->
-    <edit name="family" mode="prepend_first">
-      <string>Twitter Color Emoji</string>
-    </edit>
     <edit name="family" mode="append_last">
-      <string>Avenir</string>
-    </edit>
-    <!-- Assign the serif family -->
-    <edit name="family" mode="append_last">
-      <string>serif</string>
+      <string>Lato Regular</string>
     </edit>
   </match>
 
@@ -143,41 +131,21 @@ echo '<?xml version="1.0" encoding="UTF-8"?>
     <edit name="family" mode="assign_replace">
       <string>Lato Black</string>
     </edit>
-    <!-- Followed by Noto Color Emoji -->
-    <edit name="family" mode="prepend_first">
-      <string>Noto Color Emoji</string>
-    </edit>
-    <!-- Followed by Twitter Color Emoji -->
-    <edit name="family" mode="prepend_first">
-      <string>Twitter Color Emoji</string>
-    </edit>
     <edit name="family" mode="append_last">
-      <string>Avenir</string>
-    </edit>
-    <!-- Assign the serif family -->
-    <edit name="family" mode="append_last">
-      <string>serif</string>
+      <string>Lato Black</string>
     </edit>
   </match>
 
   <match target="font">
+    <!-- If the requested font is Lato Black -->
     <test name="family" compare="eq">
         <string>Avenir</string>
     </test>
     <edit name="family" mode="assign_replace">
       <string>Avenir</string>
     </edit>
-    <!-- Followed by Noto Color Emoji -->
-    <edit name="family" mode="prepend_first">
-      <string>Noto Color Emoji</string>
-    </edit>
-    <!-- Followed by Twitter Color Emoji -->
-    <edit name="family" mode="prepend_first">
-      <string>Twitter Color Emoji</string>
-    </edit>
-    <!-- Assign the serif family -->
     <edit name="family" mode="append_last">
-      <string>serif</string>
+      <string>Avenir</string>
     </edit>
   </match>
 
