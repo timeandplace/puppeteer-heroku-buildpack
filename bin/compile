@@ -112,10 +112,13 @@ mkdir -p $BUILD_DIR/.config/fontconfig
 <fontconfig>
     <alias>
       <family>sans-serif</family>
-      <prefer>
-        <family>Lato</family>
-      </prefer>
+      <prefer>Lato</prefer>
     </alias>
+    
+    <match target="pattern">
+      <test qual="any" name="family"><string>Avenir</string></test>
+      <edit name="family" mode="assign" binding="same"><string>Lato</string></edit>
+    </match>
 
     <!-- Add generic family. -->
     <match target="pattern">
@@ -247,3 +250,7 @@ mkdir -p $BUILD_DIR/.config/fontconfig
 
   </fontconfig>' > $BUILD_DIR/.config/fontconfig/fonts.conf
 fc-cache -f -v
+topic "MATCH FONTS: Lato"
+fc-match Lato
+topic "MATCH FONTS: Avenir"
+fc-match Avenir
