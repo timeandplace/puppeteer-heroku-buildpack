@@ -107,176 +107,96 @@ cp $FONTS_DIR/* $BUILD_DIR/.fonts/
 
 mkdir -p $BUILD_DIR/.config/fontconfig
   echo '<?xml version="1.0" encoding="UTF-8"?>
-  <!DOCTYPE fontconfig SYSTEM "fonts.dtd">
-  <fontconfig>
-    <match target="font">
-      <!-- If the requested font is Bitstream Vera Serif -->
-      <test name="family" compare="eq">
-          <string>Bitstream Vera Serif</string>
-      </test>
-      <!-- Replace the entire match list with Bitstream Vera Serif alone -->
-      <edit name="family" mode="assign_replace">
-        <string>Bitstream Vera Serif</string>
-      </edit>
-      <!-- Assign the serif family -->
-      <edit name="family" mode="append_last">
-        <string>serif</string>
-      </edit>
+<!DOCTYPE fontconfig SYSTEM "fonts.dtd">
+<fontconfig>
+
+    <!-- Add generic family. -->
+    <match target="pattern">
+        <test qual="any" name="family"><string>emoji</string></test>
+        <edit name="family" mode="assign" binding="same"><string>Noto Color Emoji</string></edit>
     </match>
 
-    <match target="font">
-      <test name="family" compare="eq">
-          <string>Lato</string>
-      </test>
-      <!-- Followed by Twitter Color Emoji -->
-      <edit name="family" mode="prepend_first">
-        <string>Twitter Color Emoji</string>
-      </edit>
-      <!-- Followed by Noto Color Emoji -->
-      <edit name="family" mode="prepend_first">
-        <string>Noto Color Emoji</string>
-      </edit>
-      <!-- Assign the serif family -->
-      <edit name="family" mode="append_last">
-        <string>serif</string>
-      </edit>
-    </match>
-
-    <match target="font">
-      <test name="family" compare="eq">
-          <string>Avenir</string>
-      </test>
-      <!-- Followed by Twitter Color Emoji -->
-      <edit name="family" mode="prepend_first">
-        <string>Twitter Color Emoji</string>
-      </edit>
-      <!-- Followed by Noto Color Emoji -->
-      <edit name="family" mode="prepend_first">
-        <string>Noto Color Emoji</string>
-      </edit>
-      <!-- Assign the serif family -->
-      <edit name="family" mode="append_last">
-        <string>serif</string>
-      </edit>
-    </match>
-
-    <match>
-      <!-- If the requested font is serif -->
-      <test qual="any" name="family">
-          <string>serif</string>
-      </test>
-      <!-- Make Bitstream Vera Serif the first result -->
-      <edit name="family" mode="prepend_first">
-        <string>Bitstream Vera Serif</string>
-      </edit>
-      <!-- Followed by Noto Color Emoji -->
-      <edit name="family" mode="prepend_first">
-        <string>Noto Color Emoji</string>
-      </edit>
-      <!-- Followed by Twitter Color Emoji -->
-      <edit name="family" mode="prepend_first">
-        <string>Twitter Color Emoji</string>
-      </edit>
-    </match>
-
-    <match target="font">
-      <!-- If the requested font is Bitstream Vera Sans -->
-      <test name="family" compare="eq">
-          <string>Bitstream Vera Sans</string>
-      </test>
-      <!-- Replace the entire match list with Bitstream Vera Sans alone -->
-      <edit name="family" mode="assign_replace">
-        <string>Bitstream Vera Sans</string>
-      </edit>
-      <!-- Assign the sans-serif family -->
-      <edit name="family" mode="append_last">
-        <string>sans-serif</string>
-      </edit>
+    <!-- This adds Noto Color Emoji as a final fallback font for the default font families. -->
+    <match target="pattern">
+        <test name="family"><string>sans</string></test>
+        <edit name="family" mode="append"><string>Noto Color Emoji</string></edit>
     </match>
 
     <match target="pattern">
-      <!-- If the requested font is sans-serif -->
-      <test qual="any" name="family">
-          <string>sans-serif</string>
-      </test>
-      <!-- Make Bitstream Vera Sans the first result -->
-      <edit name="family" mode="prepend_first">
-        <string>Bitstream Vera Sans</string>
-      </edit>
-      <!-- Followed by Noto Color Emoji -->
-      <edit name="family" mode="prepend_first">
-        <string>Noto Color Emoji</string>
-      </edit>
-      <!-- Followed by Twitter Color Emoji -->
-      <edit name="family" mode="prepend_first">
-        <string>Twitter Color Emoji</string>
-      </edit>
-    </match>
-
-    <match target="font">
-      <!-- If the requested font is Bitstream Vera Sans Mono -->
-      <test name="family" compare="eq">
-          <string>Bitstream Vera Sans Mono</string>
-      </test>
-      <!-- Replace the entire match list with Bitstream Vera Sans Mono alone -->
-      <edit name="family" mode="assign_replace">
-        <string>Bitstream Vera Sans Mono</string>
-      </edit>
-      <!-- Assign the monospace family last -->
-      <edit name="family" mode="append_last">
-        <string>monospace</string>
-      </edit>
+        <test name="family"><string>serif</string></test>
+        <edit name="family" mode="append"><string>Noto Color Emoji</string></edit>
     </match>
 
     <match target="pattern">
-      <!-- If the requested font is monospace -->
-      <test qual="any" name="family">
-          <string>monospace</string>
-      </test>
-      <!--
-      Make Bitstream Vera Sans Mono the first result
-      Note: If you want a different monospace font, this is where you change it.
-      -->
-      <edit name="family" mode="prepend_first">
-        <string>Bitstream Vera Sans Mono</string>
-      </edit>
-      <!-- Followed by Noto Color Emoji -->
-      <edit name="family" mode="prepend_first">
-        <string>Noto Color Emoji</string>
-      </edit>
-      <!-- Followed by Twitter Color Emoji -->
-      <edit name="family" mode="prepend_first">
-        <string>Twitter Color Emoji</string>
-      </edit>
+        <test name="family"><string>sans-serif</string></test>
+        <edit name="family" mode="append"><string>Noto Color Emoji</string></edit>
     </match>
 
-    <!-- Add emoji generic family -->
-    <alias binding="strong">
-      <family>emoji</family>
-      <default><family>Twitter Color Emoji</family></default>
-    </alias>
+    <match target="pattern">
+        <test name="family"><string>monospace</string></test>
+        <edit name="family" mode="append"><string>Noto Color Emoji</string></edit>
+    </match>
+    <!-- Use Noto Color Emoji when other popular fonts are being specifically requested. -->
+    <match target="pattern">
+        <test qual="any" name="family"><string>Apple Color Emoji</string></test>
+        <edit name="family" mode="assign" binding="same"><string>Noto Color Emoji</string></edit>
+    </match>
 
-    <!-- Alias requests for the other emoji fonts -->
-    <alias binding="strong">
-      <family>Apple Color Emoji</family>
-      <prefer><family>Noto Color Emoji</family></prefer>
-      <default><family>sans-serif</family></default>
-    </alias>
-    <alias binding="strong">
-      <family>Segoe UI Emoji</family>
-      <prefer><family>Noto Color Emoji</family></prefer>
-      <default><family>sans-serif</family></default>
-    </alias>
-    <alias binding="strong">
-      <family>Noto Color Emoji</family>
-      <prefer><family>Noto Color Emoji</family></prefer>
-      <default><family>sans-serif</family></default>
-    </alias>
-    <alias binding="strong">
-      <family>Apple Color Emoji</family>
-      <prefer><family>Twitter Color Emoji</family></prefer>
-      <default><family>sans-serif</family></default>
-    </alias>
+    <match target="pattern">
+        <test qual="any" name="family"><string>Segoe UI Emoji</string></test>
+        <edit name="family" mode="assign" binding="same"><string>Noto Color Emoji</string></edit>
+    </match>
+
+    <match target="pattern">
+        <test qual="any" name="family"><string>Segoe UI Symbol</string></test>
+        <edit name="family" mode="assign" binding="same"><string>Noto Color Emoji</string></edit>
+    </match>
+
+    <match target="pattern">
+        <test qual="any" name="family"><string>Android Emoji</string></test>
+        <edit name="family" mode="assign" binding="same"><string>Noto Color Emoji</string></edit>
+    </match>
+
+    <match target="pattern">
+        <test qual="any" name="family"><string>Twitter Color Emoji</string></test>
+        <edit name="family" mode="assign" binding="same"><string>Noto Color Emoji</string></edit>
+    </match>
+
+    <match target="pattern">
+        <test qual="any" name="family"><string>Twemoji</string></test>
+        <edit name="family" mode="assign" binding="same"><string>Noto Color Emoji</string></edit>
+    </match>
+
+    <match target="pattern">
+        <test qual="any" name="family"><string>Twemoji Mozilla</string></test>
+        <edit name="family" mode="assign" binding="same"><string>Noto Color Emoji</string></edit>
+    </match>
+
+    <match target="pattern">
+        <test qual="any" name="family"><string>TwemojiMozilla</string></test>
+        <edit name="family" mode="assign" binding="same"><string>Noto Color Emoji</string></edit>
+    </match>
+
+    <match target="pattern">
+        <test qual="any" name="family"><string>EmojiTwo</string></test>
+        <edit name="family" mode="assign" binding="same"><string>Noto Color Emoji</string></edit>
+    </match>
+
+    <match target="pattern">
+        <test qual="any" name="family"><string>Emoji Two</string></test>
+        <edit name="family" mode="assign" binding="same"><string>Noto Color Emoji</string></edit>
+    </match>
+
+    <match target="pattern">
+        <test qual="any" name="family"><string>EmojiSymbols</string></test>
+        <edit name="family" mode="assign" binding="same"><string>Noto Color Emoji</string></edit>
+    </match>
+
+    <match target="pattern">
+        <test qual="any" name="family"><string>Symbola</string></test>
+        <edit name="family" mode="assign" binding="same"><string>Noto Color Emoji</string></edit>
+    </match>
+
     <!-- Do not allow any app to fallback to Symbola, ever -->
     <selectfont>
       <rejectfont>
