@@ -126,9 +126,13 @@ mkdir -p $BUILD_DIR/.config/fontconfig
 
     <match target="font">
       <test name="family" compare="eq">
-          <string>Avenir</string>
+          <string>Lato</string>
       </test>
       <edit name="family" mode="assign_replace">
+        <string>Lato</string>
+      </edit>
+      <!-- Followed by Avenir -->
+      <edit name="family" mode="prepend_first">
         <string>Avenir</string>
       </edit>
       <!-- Followed by Noto Color Emoji -->
@@ -262,6 +266,7 @@ mkdir -p $BUILD_DIR/.config/fontconfig
       <prefer><family>Twitter Color Emoji</family></prefer>
       <default><family>sans-serif</family></default>
     </alias>
+    <!-- Do not allow any app to fallback to Symbola, ever -->
     <selectfont>
       <rejectfont>
         <pattern>
@@ -289,9 +294,6 @@ mkdir -p $BUILD_DIR/.config/fontconfig
         </pattern>
       </rejectfont>
     </selectfont>
-
-
-    <!-- Do not allow any app to fallback to Symbola, ever -->
     <selectfont>
       <rejectfont>
         <pattern>
